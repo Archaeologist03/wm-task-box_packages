@@ -1,11 +1,21 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 
-import BoxPackages from './pages/BoxPackages/BoxPackages';
+import styles from './app.module.scss';
+import Spinner from './components/Spinner/Spinner';
+
+const BoxPackagesPage = lazy(() => import('./pages/BoxPackages/BoxPackages'));
 
 function App() {
   return (
     <div>
-      <BoxPackages />
+      <Suspense
+        fallback={
+          <div className={styles.spinnerContainer}>
+            <Spinner />
+          </div>
+        }>
+        <BoxPackagesPage />
+      </Suspense>
     </div>
   );
 }

@@ -4,7 +4,9 @@ import PropTypes from 'prop-types';
 import Button from '../Button/Button';
 import styles from './singleBoxPackage.module.scss';
 
-const SingleBoxPackage = React.memo(({ packageData }) => {
+const SingleBoxPackage = React.memo(({ packageData, selectedDropdown }) => {
+  console.log(selectedDropdown, 665);
+
   return (
     <section className={styles.boxContainer}>
       <h2>{packageData.name}</h2>
@@ -24,6 +26,7 @@ SingleBoxPackage.propTypes = {
     promotions: PropTypes.array,
     promoText: PropTypes.string,
   }),
+  selectedDropdown: PropTypes.object,
 };
 
 export default SingleBoxPackage;

@@ -7,18 +7,22 @@
   width: 100%;
 }
 
-.dropdownContainer {
-  border: 2px solid green;
-}
-
 .boxesContainer {
   border: 2px solid tomato;
+  margin-top: 10vh;
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
 }
+
 .singleBoxContainer {
-  border: 2px solid green;
   margin: 10px;
   width: 30%;
+}
+
+.dropdownContainer {
+  width: 230px;
+  position: absolute;
+  top: 0;
+  right: 0;
 }

@@ -1,17 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import styles from './boxPackages.module.scss';
 import { BOX_PACKAGES_URL } from '../../constants/urls';
 import { useHttp } from '../../hooks/useHttp';
+import numberFromString from '../../utils/numberFromString';
 
 import SingleBoxPackage from '../../components/SingleBoxPackage/SingleBoxPackage';
 import Dropdown from '../../components/Dropdown/Dropdown';
 
 const BoxPackages = () => {
   const [fetchedData, isLoading] = useHttp(BOX_PACKAGES_URL);
-  const [dropdownState, setDropdownState] = useState(24);
+  const [selectedDropdown, setSelectedDropdown] = useState({
+    value: 24,
+    label: 'Ugovor 24 meseca',
+  });
 
-  console.log(fetchedData, 3333);
+  // DROPDOWN LOGIC
+  // Setting Selected Dropdown on initial load
+  useEffect(() => {
+    if (fetchedData?.contract_length?.preselected_contract_length) {
+      const { preselected_contract_length } = fetchedData.contract_length;
+
+      const preselectedContract = numberFromString(preselected_contract_length);
+
+      setSelectedDropdown({
+        value: preselectedContract,
+        label: preselected_contract_length,
+      });
+    }
+  }, [fetchedData]);
 
   // SINGLE BOX LOGIC
   let dropdownData;
@@ -24,44 +41,43 @@ const BoxPackages = () => {
     dropdownData = {
       ...fetchedData?.contract_length,
     };
-
     packageBoxesData = [...fetchedData?.items];
 
+    // All single boxes with data passed to them
     singleBoxPackages = packageBoxesData.map((singlePackageData) => {
-      // Send promo_text along with item data if package is featured.
-      if (singlePackageData.is_featured === 1) {
-        return (
-          <div key={singlePackageData.id} className={styles.singleBoxContainer}>
-            <SingleBoxPackage
-              packageData={{ ...singlePackageData, promoText }}
-              dropdownState={dropdownState}
-            />
-          </div>
-        );
-      }
+      let singleBoxPackageComp;
 
-      return (
-        <div key={singlePackageData.id} className={styles.singleBoxContainer}>
+      // Send promo_text along with item data if package IS_FEATURED
+      if (singlePackageData.is_featured === 1) {
+        singleBoxPackageComp = (
+          <SingleBoxPackage
+            packageData={{ ...singlePackageData, promoText }}
+            selectedDropdown={selectedDropdown}
+          />
+        );
+      } else {
+        singleBoxPackageComp = (
           <SingleBoxPackage
             packageData={singlePackageData}
-            dropdownState={dropdownState}
+            selectedDropdown={selectedDropdown}
           />
+        );
+      }
+      return (
+        <div key={singlePackageData.id} className={styles.singleBoxContainer}>
+          {singleBoxPackageComp}
         </div>
       );
     });
   }
-
-  // DROPDOWN LOGIC
-  const onDropdownChange = (contractLength) => {
-    setDropdownState(contractLength);
-  };
 
   return (
     <div className={styles.boxPackagesContainer}>
       <aside className={styles.dropdownContainer}>
         <Dropdown
           dropdownData={dropdownData}
-          onDropdownChange={onDropdownChange}
+          selectedDropdown={selectedDropdown}
+          setSelectedDropdown={setSelectedDropdown}
         />
       </aside>
       <section className={styles.boxesContainer}>{singleBoxPackages}</section>
