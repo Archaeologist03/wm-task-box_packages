@@ -1,0 +1,8 @@
+@import '../../styles/_variables';
+
+.boxContainer {
+  border: 2px solid red;
+  border-radius: 4px;
+  background-color: $beige-color;
+  width: 100%;
+}
