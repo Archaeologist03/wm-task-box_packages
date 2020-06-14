@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+import styles from './boxPackages.module.scss';
 import { BOX_PACKAGES_URL } from '../../constants/urls';
 import { useHttp } from '../../hooks/useHttp';
 
@@ -30,20 +31,22 @@ const BoxPackages = () => {
       // Send promo_text along with item data if package is featured.
       if (singlePackageData.is_featured === 1) {
         return (
-          <SingleBoxPackage
-            key={singlePackageData.id}
-            packageData={{ ...singlePackageData, promoText }}
-            dropdownState={dropdownState}
-          />
+          <div key={singlePackageData.id} className={styles.singleBoxContainer}>
+            <SingleBoxPackage
+              packageData={{ ...singlePackageData, promoText }}
+              dropdownState={dropdownState}
+            />
+          </div>
         );
       }
 
       return (
-        <SingleBoxPackage
-          key={singlePackageData.id}
-          packageData={singlePackageData}
-          dropdownState={dropdownState}
-        />
+        <div key={singlePackageData.id} className={styles.singleBoxContainer}>
+          <SingleBoxPackage
+            packageData={singlePackageData}
+            dropdownState={dropdownState}
+          />
+        </div>
       );
     });
   }
@@ -54,12 +57,14 @@ const BoxPackages = () => {
   };
 
   return (
-    <div>
-      <Dropdown
-        dropdownData={dropdownData}
-        onDropdownChange={onDropdownChange}
-      />
-      <section>{singleBoxPackages}</section>
+    <div className={styles.boxPackagesContainer}>
+      <aside className={styles.dropdownContainer}>
+        <Dropdown
+          dropdownData={dropdownData}
+          onDropdownChange={onDropdownChange}
+        />
+      </aside>
+      <section className={styles.boxesContainer}>{singleBoxPackages}</section>
     </div>
   );
 };
