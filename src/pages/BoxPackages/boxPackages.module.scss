@@ -1,0 +1,41 @@
+.boxPackagesContainer {
+  min-height: 100vh;
+  min-width: 100vw;
+  max-width: 100vw;
+  width: 100%;
+}
+
+.boxesContainer {
+  margin-top: 10vh;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.singleBoxContainer {
+  margin: 10px;
+  height: 750px;
+
+  @media (max-width: 1111px) {
+    display: block;
+  }
+}
+
+.dropdownContainer {
+  width: 230px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-top: 15px;
+  margin-right: 100px;
+
+  @media (max-width: 768px) {
+    margin-right: 15px;
+  }
+
+  @media (max-width: 320px) {
+    right: 50%;
+    transform: translateX(50%);
+    margin-right: 0;
+  }
+}

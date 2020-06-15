@@ -1,0 +1,21 @@
+.productContainer {
+  padding: 40px;
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+
+  img {
+    width: 40px;
+    display: inline-block;
+    position: absolute;
+    left: 3%;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  ul {
+    display: inline-block;
+    margin-left: 50px;
+  }
+}

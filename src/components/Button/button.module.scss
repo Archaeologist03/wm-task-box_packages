@@ -1,0 +1,14 @@
+@import '../../styles//_variables';
+
+.button {
+  width: 90%;
+  color: #fff;
+  font-size: 22px;
+  font-weight: bold;
+  text-align: center;
+  padding: 7px;
+  background-color: $purple-color;
+  border-radius: 8px;
+  outline: none;
+  border: none;
+}

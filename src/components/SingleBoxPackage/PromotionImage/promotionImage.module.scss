@@ -1,0 +1,24 @@
+@import '../../../styles/_variables';
+
+.imageContainer {
+  overflow: hidden;
+  background-color: #fff;
+  margin: 10px 5px;
+  position: relative;
+
+  img {
+    width: 75px;
+    display: inline-block;
+  }
+
+  p {
+    display: inline-block;
+    color: $purple-color;
+    font-weight: 500;
+    font-size: 15px;
+    position: absolute;
+    right: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
