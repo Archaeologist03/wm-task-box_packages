@@ -15,8 +15,6 @@ const BoxPackages = () => {
     label: 'Ugovor 24 meseca',
   });
 
-  console.log(fetchedData);
-
   // DROPDOWN LOGIC
   // Setting Selected Dropdown on initial load
   useEffect(() => {

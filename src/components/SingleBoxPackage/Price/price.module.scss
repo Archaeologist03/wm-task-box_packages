@@ -1,0 +1,38 @@
+@import '../../../styles/_variables';
+
+.priceContainer {
+  color: $purple-color;
+  font-size: 22px;
+  padding-top: 20px;
+}
+
+.priceRec {
+  font-size: 34px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.oldPriceRecContainer {
+  position: relative;
+
+  .newPrice {
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 30px;
+    font-weight: 500;
+  }
+
+  .lineThruPrice {
+    text-decoration: line-through;
+    font-weight: 500;
+    padding-top: 6px;
+  }
+
+  .promoText {
+    color: black;
+    font-size: 16px;
+    text-align: center;
+    margin-top: 20px;
+  }
+}
