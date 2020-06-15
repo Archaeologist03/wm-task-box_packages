@@ -23,24 +23,25 @@ const SingleBoxPackage = React.memo(({ packageData, selectedDropdown }) => {
 
   return (
     <section className={styles.boxContainer}>
-      <h2>{packageData?.name}</h2>
+      {/* box NAME */}
+      <h2 className={styles.boxName}>{packageData?.name}</h2>
       {/* TV */}
-      <section>
+      <section className={styles.tvSection}>
         <ProductsList products={tvProducts} />
       </section>
       {/*  NET + TV Pic if exist */}
-      <section>
+      <section className={styles.netSection}>
         <ProductsList products={netProducts} />
         {/* Promotion image */}
         {selectedDropdown.label ===
         packageData?.promotions[0]?.discount_variations[0] ? (
-          <div>
+          <div className={styles.promoImgContainer}>
             <PromotionImage promotions={packageData?.promotions} />
           </div>
         ) : null}
       </section>
       {/* PRICE */}
-      <section>
+      <section className={styles.priceSection}>
         <Price
           prices={packageData?.prices}
           selectedDropdown={selectedDropdown}

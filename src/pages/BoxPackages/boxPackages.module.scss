@@ -8,16 +8,27 @@
 }
 
 .boxesContainer {
-  border: 2px solid tomato;
   margin-top: 10vh;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   flex-wrap: wrap;
 }
 
 .singleBoxContainer {
   margin: 10px;
-  width: 30%;
+  height: 550px;
+
+  @media (max-width: 1111px) {
+    display: block;
+  }
+
+  @media (max-width: 768px) {
+    display: block;
+  }
+
+  @media (max-width: 320px) {
+    display: block;
+  }
 }
 
 .dropdownContainer {
@@ -25,4 +36,16 @@
   position: absolute;
   top: 0;
   right: 0;
+  margin-top: 15px;
+  margin-right: 100px;
+
+  @media (max-width: 768px) {
+    margin-right: 15px;
+  }
+
+  @media (max-width: 320px) {
+    right: 50%;
+    transform: translateX(50%);
+    margin-right: 0;
+  }
 }

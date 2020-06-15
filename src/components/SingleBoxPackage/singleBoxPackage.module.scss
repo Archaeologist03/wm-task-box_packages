@@ -1,6 +1,33 @@
 @import '../../styles/_variables';
 
 .boxContainer {
-  border: 2px solid red;
   background-color: $beige-color;
+  border-radius: 12px;
+  padding: 10px;
+  overflow: hidden;
+  width: 335px;
+  height: 100%;
+}
+
+.boxName {
+  color: $purple-color;
+  font-size: 2rem;
+  border-bottom: $box-bottom-border;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.tvSection {
+  border-bottom: $box-bottom-border;
+}
+
+.netSection {
+  border-bottom: $box-bottom-border;
+
+  .promoImgContainer {
+  }
+}
+
+.priceSection {
+  border-bottom: $box-bottom-border;
 }

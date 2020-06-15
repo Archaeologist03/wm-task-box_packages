@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Select from 'react-select';
 
-import styles from './dropdown.module.scss';
-
 import numberFromString from '../../utils/numberFromString';
 
 const Dropdown = ({ dropdownData, selectedDropdown, setSelectedDropdown }) => {
@@ -23,17 +21,11 @@ const Dropdown = ({ dropdownData, selectedDropdown, setSelectedDropdown }) => {
   const customStyles = {
     control: (base, state) => ({
       ...base,
-      border: 'none',
       background: '#f8f0df',
-      // match with the menu
-      borderRadius: state.isFocused ? '3px 3px 0 0' : 3,
-      // Overwrittes the different states of border
-      borderColor: state.isFocused ? 'yellow' : 'green',
-      // Removes weird border around container
-      boxShadow: state.isFocused ? null : null,
+      border: '2px solid transparent',
+      transition: '0.5s border ease-in-out',
       '&:hover': {
-        // Overwrittes the different states of border
-        borderColor: state.isFocused ? 'red' : 'blue',
+        border: '2px solid #742d6c',
       },
     }),
     option: (base) => ({
@@ -47,17 +39,13 @@ const Dropdown = ({ dropdownData, selectedDropdown, setSelectedDropdown }) => {
     }),
     menu: (base) => ({
       ...base,
-      // override border radius to match the box
       borderRadius: 0,
-      // kill the gap
       marginTop: 0,
       background: '#f8f4eb',
-      color: '#444f62',
+      color: '#fff',
     }),
-
     menuList: (base) => ({
       ...base,
-      // kill the white space on first and last option
       padding: 0,
     }),
   };
