@@ -2,9 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Price = ({ prices, selectedDropdown }) => {
-  console.log(prices);
-  console.log(selectedDropdown);
-
   // Remove <p> tags
   const oldPricePromoText = prices?.old_price_promo_text.replace(
     /<\/?p[^>]*>/g,
@@ -37,8 +34,6 @@ const Price = ({ prices, selectedDropdown }) => {
       </div>
     );
   }
-
-  console.log(prices?.price_recurring[selectedDropdown.label]);
 
   return <div></div>;
 };

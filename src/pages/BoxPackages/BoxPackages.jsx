@@ -15,6 +15,8 @@ const BoxPackages = () => {
     label: 'Ugovor 24 meseca',
   });
 
+  console.log(fetchedData);
+
   // DROPDOWN LOGIC
   // Setting Selected Dropdown on initial load
   useEffect(() => {
@@ -53,6 +55,7 @@ const BoxPackages = () => {
           <SingleBoxPackage
             packageData={{ ...singlePackageData, promoText }}
             selectedDropdown={selectedDropdown}
+            assets={fetchedData?.assets}
           />
         );
       } else {
@@ -60,6 +63,7 @@ const BoxPackages = () => {
           <SingleBoxPackage
             packageData={singlePackageData}
             selectedDropdown={selectedDropdown}
+            assets={fetchedData?.assets}
           />
         );
       }

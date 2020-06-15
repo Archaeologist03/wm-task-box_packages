@@ -7,52 +7,52 @@ import ProductsList from './ProductsList/ProductsList';
 import PromotionImage from './PromotionImage/PromotionImage';
 import Price from './Price/Price';
 
-const SingleBoxPackage = React.memo(({ packageData, selectedDropdown }) => {
-  // const [tvProducts, setTvProducts] = useState(null);
-  // const [netProducts, setNetProducts] = useState(null);
+const SingleBoxPackage = React.memo(
+  ({ packageData, selectedDropdown, assets }) => {
+    // const [tvProducts, setTvProducts] = useState(null);
+    // const [netProducts, setNetProducts] = useState(null);
 
-  const tvProducts = packageData.included.filter(
-    (product) => product.product_category === 'tv',
-  );
+    const tvProducts = packageData.included.filter(
+      (product) => product.product_category === 'tv',
+    );
 
-  const netProducts = packageData.included.filter(
-    (product) => product.product_category === 'net',
-  );
+    const netProducts = packageData.included.filter(
+      (product) => product.product_category === 'net',
+    );
 
-  console.log(packageData);
-
-  return (
-    <section className={styles.boxContainer}>
-      {/* box NAME */}
-      <h2 className={styles.boxName}>{packageData?.name}</h2>
-      {/* TV */}
-      <section className={styles.tvSection}>
-        <ProductsList products={tvProducts} />
+    return (
+      <section className={styles.boxContainer}>
+        {/* box NAME */}
+        <h2 className={styles.boxName}>{packageData?.name}</h2>
+        {/* TV */}
+        <section className={styles.tvSection}>
+          <ProductsList products={tvProducts} icon={assets.tv_category} />
+        </section>
+        {/*  NET + TV Pic if exist */}
+        <section className={styles.netSection}>
+          <ProductsList products={netProducts} icon={assets.net_category} />
+          {/* Promotion image */}
+          {selectedDropdown.label ===
+          packageData?.promotions[0]?.discount_variations[0] ? (
+            <div className={styles.promoImgContainer}>
+              <PromotionImage promotions={packageData?.promotions} />
+            </div>
+          ) : null}
+        </section>
+        {/* PRICE */}
+        <section className={styles.priceSection}>
+          <Price
+            prices={packageData?.prices}
+            selectedDropdown={selectedDropdown}
+          />
+        </section>
+        <div className={styles.buttonContainer}>
+          <Button />
+        </div>
       </section>
-      {/*  NET + TV Pic if exist */}
-      <section className={styles.netSection}>
-        <ProductsList products={netProducts} />
-        {/* Promotion image */}
-        {selectedDropdown.label ===
-        packageData?.promotions[0]?.discount_variations[0] ? (
-          <div className={styles.promoImgContainer}>
-            <PromotionImage promotions={packageData?.promotions} />
-          </div>
-        ) : null}
-      </section>
-      {/* PRICE */}
-      <section className={styles.priceSection}>
-        <Price
-          prices={packageData?.prices}
-          selectedDropdown={selectedDropdown}
-        />
-      </section>
-      <div className={styles.buttonContainer}>
-        <Button />
-      </div>
-    </section>
-  );
-});
+    );
+  },
+);
 
 SingleBoxPackage.propTypes = {
   packageData: PropTypes.shape({
@@ -63,6 +63,7 @@ SingleBoxPackage.propTypes = {
     promoText: PropTypes.string,
   }),
   selectedDropdown: PropTypes.object,
+  assets: PropTypes.object,
 };
 
 export default SingleBoxPackage;
