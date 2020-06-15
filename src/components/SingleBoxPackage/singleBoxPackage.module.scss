@@ -25,9 +25,15 @@
   border-bottom: $box-bottom-border;
 
   .promoImgContainer {
+    margin: 40px 0;
   }
 }
 
 .priceSection {
   border-bottom: $box-bottom-border;
+}
+
+.buttonContainer {
+  margin: 30px;
+  text-align: center;
 }

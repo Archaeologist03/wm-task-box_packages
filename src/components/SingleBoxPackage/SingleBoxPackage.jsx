@@ -47,7 +47,9 @@ const SingleBoxPackage = React.memo(({ packageData, selectedDropdown }) => {
           selectedDropdown={selectedDropdown}
         />
       </section>
-      <Button />
+      <div className={styles.buttonContainer}>
+        <Button />
+      </div>
     </section>
   );
 });
