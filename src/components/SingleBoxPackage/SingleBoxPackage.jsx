@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { motion } from 'framer-motion';
 
 import styles from './singleBoxPackage.module.scss';
 import Button from '../Button/Button';
@@ -7,11 +8,27 @@ import ProductsList from './ProductsList/ProductsList';
 import PromotionImage from './PromotionImage/PromotionImage';
 import Price from './Price/Price';
 
+const containerVariants = {
+  hidden: {
+    opacity: 0,
+    y: -25,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: 0.5,
+      duration: 1,
+    },
+  },
+  exit: {
+    x: '-100vw',
+    transition: { ease: 'easeInOut' },
+  },
+};
+
 const SingleBoxPackage = React.memo(
   ({ packageData, selectedDropdown, assets }) => {
-    // const [tvProducts, setTvProducts] = useState(null);
-    // const [netProducts, setNetProducts] = useState(null);
-
     const tvProducts = packageData.included.filter(
       (product) => product.product_category === 'tv',
     );
@@ -21,8 +38,13 @@ const SingleBoxPackage = React.memo(
     );
 
     return (
-      <section className={styles.boxContainer}>
-        {/* box NAME */}
+      <motion.section
+        className={styles.boxContainer}
+        variants={containerVariants}
+        initial='hidden'
+        animate='visible'
+        exit='exit'>
+        {/* Box NAME */}
         <h2 className={styles.boxName}>{packageData?.name}</h2>
         {/* TV */}
         <section className={styles.tvSection}>
@@ -49,7 +71,7 @@ const SingleBoxPackage = React.memo(
         <div className={styles.buttonContainer}>
           <Button />
         </div>
-      </section>
+      </motion.section>
     );
   },
 );
