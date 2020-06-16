@@ -22,7 +22,7 @@ const Dropdown = ({ dropdownData, selectedDropdown, setSelectedDropdown }) => {
 
   // Dropdown (React Select) styles
   const customStyles = {
-    control: (base, state) => ({
+    control: (base) => ({
       ...base,
       background: '#fcf6e9',
       border: '2px solid transparent',

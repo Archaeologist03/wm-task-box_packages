@@ -39,6 +39,12 @@ const SingleBoxPackage = React.memo(
       (product) => product.product_category === 'net',
     );
 
+    const promo = !packageData?.promoText ? null : (
+      <div className={styles.promoTextContainer}>
+        <p>{packageData.promoText}</p>
+      </div>
+    );
+
     return (
       <motion.section
         className={styles.boxContainer}
@@ -46,6 +52,8 @@ const SingleBoxPackage = React.memo(
         initial='hidden'
         animate='visible'
         exit='exit'>
+        {/* Promo Text (if exist) */}
+        {promo}
         {/* Box NAME */}
         <h2 className={styles.boxName}>{packageData?.name}</h2>
         {/* TV */}

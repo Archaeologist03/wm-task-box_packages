@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 import styles from './productList.module.scss';
@@ -10,12 +10,14 @@ const ProductsList = React.memo(({ products, icon }) => {
     const textArray = text.split(shouldBeBold);
     return (
       <span>
-        {textArray.map((item, index) => (
-          <>
-            {item}
-            {index !== textArray.length - 1 && <b>{shouldBeBold}</b>}
-          </>
-        ))}
+        {textArray.map((item, index) => {
+          return (
+            <Fragment key={index + Math.random()}>
+              {item}
+              {index !== textArray.length - 1 && <b>{shouldBeBold}</b>}
+            </Fragment>
+          );
+        })}
       </span>
     );
   };
