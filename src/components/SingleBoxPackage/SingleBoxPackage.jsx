@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
 
+
 import styles from './singleBoxPackage.module.scss';
 import Button from '../Button/Button';
 import ProductsList from './ProductsList/ProductsList';
@@ -29,6 +30,7 @@ const containerVariants = {
 
 const SingleBoxPackage = React.memo(
   ({ packageData, selectedDropdown, assets }) => {
+
     const tvProducts = packageData.included.filter(
       (product) => product.product_category === 'tv',
     );
