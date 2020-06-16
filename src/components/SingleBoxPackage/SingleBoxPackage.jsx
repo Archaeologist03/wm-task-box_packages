@@ -2,17 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
 
-
 import styles from './singleBoxPackage.module.scss';
 import Button from '../Button/Button';
 import ProductsList from './ProductsList/ProductsList';
 import PromotionImage from './PromotionImage/PromotionImage';
 import Price from './Price/Price';
 
+// On Load animation - framer-motion
 const containerVariants = {
   hidden: {
     opacity: 0,
-    y: -25,
+    y: -15,
   },
   visible: {
     opacity: 1,
@@ -28,9 +28,9 @@ const containerVariants = {
   },
 };
 
+// COMPONENT LOGIC
 const SingleBoxPackage = React.memo(
   ({ packageData, selectedDropdown, assets }) => {
-
     const tvProducts = packageData.included.filter(
       (product) => product.product_category === 'tv',
     );
@@ -47,7 +47,9 @@ const SingleBoxPackage = React.memo(
         animate='visible'
         exit='exit'>
         {/* Box NAME */}
-        <h2 className={styles.boxName}>{packageData?.name}</h2>
+        <h2 className={`${styles.eachSection} ${styles.boxName}`}>
+          {packageData?.name}
+        </h2>
         {/* TV */}
         <section className={styles.tvSection}>
           <ProductsList products={tvProducts} icon={assets.tv_category} />

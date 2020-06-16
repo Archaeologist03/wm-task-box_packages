@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import styles from './productList.module.scss';
+
+// Each category product - list of items package in that category offers.
 const ProductsList = React.memo(({ products, icon }) => {
   return (
     <div className={styles.productContainer}>
