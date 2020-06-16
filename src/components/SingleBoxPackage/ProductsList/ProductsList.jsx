@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import styles from './productList.module.scss';
 
-// Each category product - list of items package in that category offers.
+// Each category product - list of items that category offers.
 const ProductsList = React.memo(({ products, icon }) => {
   // Bold inputed part of the string.
   const boldPartOfText = (text, shouldBeBold) => {
