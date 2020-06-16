@@ -1,0 +1,2 @@
+/api/* http://www.mocky.io/:splat 200!
+
