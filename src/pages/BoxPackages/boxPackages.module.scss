@@ -22,7 +22,7 @@
 }
 
 .dropdownContainer {
-  width: 230px;
+  width: 220px;
   position: absolute;
   top: 0;
   right: 0;
@@ -33,7 +33,7 @@
     margin-right: 15px;
   }
 
-  @media (max-width: 320px) {
+  @media (max-width: 568px) {
     right: 50%;
     transform: translateX(50%);
     margin-right: 0;

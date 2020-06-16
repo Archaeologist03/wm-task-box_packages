@@ -47,9 +47,7 @@ const SingleBoxPackage = React.memo(
         animate='visible'
         exit='exit'>
         {/* Box NAME */}
-        <h2 className={`${styles.eachSection} ${styles.boxName}`}>
-          {packageData?.name}
-        </h2>
+        <h2 className={styles.boxName}>{packageData?.name}</h2>
         {/* TV */}
         <section className={styles.tvSection}>
           <ProductsList products={tvProducts} icon={assets.tv_category} />
