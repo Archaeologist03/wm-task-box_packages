@@ -47,7 +47,7 @@ const BoxPackages = () => {
     singleBoxPackages = packageBoxesData.map((singlePackageData) => {
       let singleBoxPackageComp;
 
-      // Send promo_text along with item data if package IS_FEATURED
+      // Send promo_text along with item data if package is IS_FEATURED
       if (singlePackageData.is_featured === 1) {
         singleBoxPackageComp = (
           <SingleBoxPackage

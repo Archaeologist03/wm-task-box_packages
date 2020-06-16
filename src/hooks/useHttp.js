@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-// HTTP CALL
-// - Returns fetched data and loading state.
+// HTTP Calls - Returns fetched data & loading state
 export const useHttp = (url, dependencies) => {
   const [fetchedData, setFetchedData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);

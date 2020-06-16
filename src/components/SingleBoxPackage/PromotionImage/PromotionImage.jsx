@@ -2,13 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import styles from './promotionImage.module.scss';
+import removePTags from '../../../utils/removePTags';
 
 const PromotionImage = React.memo(({ promotions }) => {
   const promos = promotions.map((promotionObj) => {
     const { promotion_image, promo_text, id } = promotionObj;
 
-    // Removes <p> tags
-    const promoText = promo_text.replace(/<\/?p[^>]*>/g, '');
+    const promoText = removePTags(promo_text);
 
     return (
       <div key={id}>

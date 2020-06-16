@@ -2,13 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import styles from './price.module.scss';
+import removePTags from '../../../utils/removePTags';
 
 const Price = ({ prices, selectedDropdown }) => {
-  // Remove <p> tags
-  const oldPricePromoText = prices?.old_price_promo_text.replace(
-    /<\/?p[^>]*>/g,
-    '',
-  );
+  const oldPricePromoText = removePTags(prices?.old_price_promo_text);
 
   let oldPriceRec;
   let priceRec;
@@ -21,7 +18,7 @@ const Price = ({ prices, selectedDropdown }) => {
 
     oldPriceRec = (
       <div className={styles.oldPriceRecContainer}>
-        {/* 2 prices - line thru and new one */}
+        {/* 2 prices - old(line thru) and new one */}
         <p className={styles.lineThruPrice}>{fixedNum} rsd/mes.</p>
         <p className={styles.newPrice}> 1 rsd/mes.</p>
         {/* prvih 6 meseci promo */}
@@ -30,7 +27,7 @@ const Price = ({ prices, selectedDropdown }) => {
     );
   }
 
-  // non 24 prices - single price
+  // non promo(24) prices - single price
   if (selectedDropdown.value !== 24) {
     const fixedNum = Number(
       prices?.price_recurring[selectedDropdown.label],

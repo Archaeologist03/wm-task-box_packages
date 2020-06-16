@@ -5,6 +5,8 @@ import Select from 'react-select';
 import numberFromString from '../../utils/numberFromString';
 
 const Dropdown = ({ dropdownData, selectedDropdown, setSelectedDropdown }) => {
+  // Forming data for React Select options (dropdown)
+  // eg. {value: 24, label: "Ugovor 24 meseca"}
   let options;
   if (dropdownData?.contract_length_options) {
     options = dropdownData.contract_length_options.map((option) => {
@@ -18,10 +20,11 @@ const Dropdown = ({ dropdownData, selectedDropdown, setSelectedDropdown }) => {
     setSelectedDropdown(selectedOption);
   };
 
+  // Dropdown (React Select) styles
   const customStyles = {
     control: (base, state) => ({
       ...base,
-      background: '#f8f0df',
+      background: '#fcf6e9',
       border: '2px solid transparent',
       transition: '0.5s border ease-in-out',
       '&:hover': {
@@ -30,7 +33,7 @@ const Dropdown = ({ dropdownData, selectedDropdown, setSelectedDropdown }) => {
     }),
     option: (base) => ({
       ...base,
-      background: '#f8f0df',
+      background: '#fcf6e9',
       color: '#111',
       '&:hover': {
         color: '#fff',
@@ -53,7 +56,6 @@ const Dropdown = ({ dropdownData, selectedDropdown, setSelectedDropdown }) => {
   return (
     <Select
       styles={customStyles}
-      // value={selectedDropdown}
       defaultValue={selectedDropdown}
       options={options}
       onChange={handleChange}></Select>

@@ -11,4 +11,12 @@
   border-radius: 8px;
   outline: none;
   border: none;
+  transition: color 0.5s ease-in-out, background-color 0.8s ease-in-out,
+    box-shadow 0.1s ease-in-out;
+
+  &:hover {
+    background-color: #fff;
+    color: $purple-color;
+    box-shadow: 1px 1px 6px $purple-color;
+  }
 }
